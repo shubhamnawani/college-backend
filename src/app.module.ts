@@ -10,11 +10,11 @@ import { CollegeWiseCourse } from './entities/college-wise-course.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'root', 
-      database: 'college_data',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT, 10),
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [College, CollegePlacement, CollegeWiseCourse],
       synchronize: false, 
     }),
